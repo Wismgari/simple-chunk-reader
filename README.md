@@ -1,15 +1,15 @@
-# chunk-reader
+# simple-chunk-reader
 
 Simple, buffered, chunk-by-chunk file reader with customizable buffer size.
 
 ## Install
 
 ```sh
-npm install chunk-reader
+npm install simple-chunk-reader
 ```
 
 ```sh
-yarn add chunk-reader
+yarn add simple-chunk-reader
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ yarn add chunk-reader
 #### in TypeScript
 
 ```ts
-import ChunkReader from "chunk-reader";
+import ChunkReader from "simple-chunk-reader";
 
 const filePath = "./somefile.txt";
 const chunkSize = 1024;
@@ -32,7 +32,7 @@ while (!reader.isDone) {
 #### in JavaScript
 
 ```js
-var ChunkReader = require("chunk-reader").default;
+var ChunkReader = require("simple-chunk-reader").default;
 
 var filePath = "./somefile.txt";
 var chunkSize = 1024;
@@ -64,7 +64,7 @@ The module exports the following functions:
 Syntax:
 
 ```ts
-import ChunkReader from "chunk-reader";
+import ChunkReader from "simple-chunk-reader";
 
 const reader = new ChunkReader("./file.txt", 65536);
 ```
@@ -78,7 +78,7 @@ It returns a next chunk of current file stream.
 Syntax:
 
 ```ts
-import ChunkReader from "chunk-reader";
+import ChunkReader from "simple-chunk-reader";
 
 const reader = new ChunkReader("./file.txt", 8);
 
@@ -110,7 +110,7 @@ It returns a next multiple chunk of current file stream.
 Syntax:
 
 ```ts
-import ChunkReader from "chunk-reader";
+import ChunkReader from "simple-chunk-reader";
 
 const reader = new ChunkReader("./file.txt", 8);
 
