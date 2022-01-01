@@ -1,5 +1,5 @@
 {
-  "name": "simple-chunk-reader",
+  "name": "@aldipermanaetikaputra/simple-chunk-reader",
   "version": "1.0.0",
   "url": "https://github.com/aldipermanaetikaputra/simple-chunk-reader",
   "keywords": [
@@ -20,6 +20,9 @@
   "repository": {
     "type": "git",
     "url": "https://aldipermanaetikaputra@github.com/aldipermanaetikaputra/simple-chunk-reader.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "tsc",
