@@ -50,7 +50,7 @@ class ChunkReader {
     this.isDone = this.bytesLength === this.bytesRead;
   }
 
-  private close() {
+  public close() {
     fs.closeSync(this.fileDescriptor);
     this.isDone = true;
   }

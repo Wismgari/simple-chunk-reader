@@ -51,6 +51,7 @@ The module exports the following functions:
 - [`constructor`](#constructor)
 - [`read`](#read)
 - [`readMultiple`](#readMultiple)
+- [`close`](#close)
 
 ### constructor
 
@@ -60,14 +61,6 @@ The module exports the following functions:
 | --------- | :----: | ------------------------------------------------ |
 | path      | string | The path or location of your file                |
 | size      | number | Chunk/buffer size in bytes, default: 1024 (1 kB) |
-
-Syntax:
-
-```ts
-import ChunkReader from "simple-chunk-reader";
-
-const reader = new ChunkReader("./file.txt", 65536);
-```
 
 ### read
 
@@ -80,11 +73,13 @@ Syntax:
 ```ts
 import ChunkReader from "simple-chunk-reader";
 
-const reader = new ChunkReader("./file.txt", 8);
+const filePath = "./file.txt";
+const chunkSize = 8;
+const reader = new ChunkReader(filePath, chunkSize);
 
-console.log(reader.read());
-console.log(reader.read());
-console.log(reader.read());
+while (!reader.isDone) {
+  console.log(reader.read());
+}
 ```
 
 `./file.txt`
@@ -99,6 +94,11 @@ Output:
 aaaabbbb
 ccccdddd
 eeeeffff
+gggghhhh
+iiiijjjj
+kkkkllll
+mmmmnnnn
+oooo
 ```
 
 ### readMultiple
@@ -112,10 +112,51 @@ Syntax:
 ```ts
 import ChunkReader from "simple-chunk-reader";
 
-const reader = new ChunkReader("./file.txt", 8);
+const filePath = "./file.txt";
+const chunkSize = 8;
+const reader = new ChunkReader(filePath, chunkSize);
+
+while (!reader.isDone) {
+  console.log(reader.readMultiple(3));
+}
+```
+
+`./file.txt`
+
+```txt
+aaaabbbbccccddddeeeeffffgggghhhhiiiijjjjkkkkllllmmmmnnnnoooo
+```
+
+Output:
+
+```bash
+['aaaabbbb', 'ccccdddd', 'eeeeffff']
+['gggghhhh', 'iiiijjjj', 'kkkkllll']
+['mmmmnnnn', 'oooo']
+```
+
+### close
+
+- `close(): void`
+
+Close the current file descriptor thereby clearing the file stream that is associated with it.
+
+You need to call this method only if you are done before reading the whole content stream. `read()` and `readMutiple()` will call this function automatically when reaching the end of the stream.
+
+Syntax:
+
+```ts
+import ChunkReader from "simple-chunk-reader";
+
+const filePath = "./file.txt";
+const chunkSize = 8;
+const reader = new ChunkReader(filePath, chunkSize);
 
 console.log(reader.readMultiple(2));
 console.log(reader.readMultiple(4));
+console.log(reader.read());
+
+reader.close();
 ```
 
 `./file.txt`
@@ -129,4 +170,5 @@ Output:
 ```bash
 ['aaaabbbb', 'ccccdddd']
 ['eeeeffff', 'gggghhhh', 'iiiijjjj', 'kkkkllll']
+mmmmnnnn
 ```
