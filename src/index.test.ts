@@ -192,44 +192,44 @@ describe("Error Handling", () => {
 });
 
 class Timer {
-  #duration: number;
-  #started?: bigint;
+  duration: number;
+  started?: bigint;
 
   constructor(duration = 0) {
-    this.#duration = duration;
+    this.duration = duration;
   }
 
   private calculateNow() {
-    return this.#started
-      ? Number(process.hrtime.bigint() - this.#started) / 1e6
+    return this.started
+      ? Number(process.hrtime.bigint() - this.started) / 1e6
       : 0;
   }
 
   public getDuration() {
-    return this.#duration + this.calculateNow();
+    return this.duration + this.calculateNow();
   }
 
   public start() {
-    if (this.#started !== undefined) {
+    if (this.started !== undefined) {
       throw new Error("Unable to start active timer");
     }
 
-    this.#started = process.hrtime.bigint();
+    this.started = process.hrtime.bigint();
   }
 
   public stop() {
-    if (this.#started === undefined) {
+    if (this.started === undefined) {
       throw new Error("No active timer");
     }
 
-    this.#duration += this.calculateNow();
+    this.duration += this.calculateNow();
 
-    this.#started = undefined;
+    this.started = undefined;
   }
 
   public reset() {
-    this.#started = undefined;
-    this.#duration = 0;
+    this.started = undefined;
+    this.duration = 0;
   }
 }
 
