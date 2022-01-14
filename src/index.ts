@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-export default class ChunkReader {
+class ChunkReader {
   private fileDescriptor?: number;
 
   public filePath: string;
@@ -91,4 +91,4 @@ export default class ChunkReader {
   }
 }
 
-module.exports = ChunkReader;
+export = ChunkReader;

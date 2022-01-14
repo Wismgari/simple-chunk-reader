@@ -1,6 +1,7 @@
 import { jest } from "@jest/globals";
 import * as fs from "fs";
-import ChunkReader from "./";
+
+const ChunkReader = require("./");
 
 jest.setTimeout(10000);
 
