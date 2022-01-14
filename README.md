@@ -14,10 +14,8 @@ yarn add simple-chunk-reader
 
 ## Usage
 
-#### in TypeScript
-
-```ts
-import ChunkReader from "simple-chunk-reader";
+```js
+const ChunkReader = require("simple-chunk-reader");
 
 const filePath = "./somefile.txt";
 const chunkSize = 1024;
@@ -29,29 +27,14 @@ while (!reader.isDone) {
 }
 ```
 
-#### in JavaScript
-
-```js
-var ChunkReader = require("simple-chunk-reader").default;
-
-var filePath = "./somefile.txt";
-var chunkSize = 1024;
-var reader = new ChunkReader(filePath, chunkSize);
-
-var content = "";
-while (!reader.isDone) {
-  content += reader.read();
-}
-```
-
 ## API
 
 The module exports the following functions:
 
-- [`constructor`](#constructor)
-- [`read`](#read)
-- [`readMultiple`](#readMultiple)
-- [`close`](#close)
+- [constructor](#constructor)
+- [read](#read)
+- [readMultiple](#readmultiple)
+- [close](#close)j
 
 ### constructor
 
@@ -70,8 +53,8 @@ It returns a next chunk of current file stream.
 
 Syntax:
 
-```ts
-import ChunkReader from "simple-chunk-reader";
+```js
+const ChunkReader = require("simple-chunk-reader");
 
 const filePath = "./file.txt";
 const chunkSize = 8;
@@ -109,8 +92,8 @@ It returns a next multiple chunk of current file stream.
 
 Syntax:
 
-```ts
-import ChunkReader from "simple-chunk-reader";
+```js
+const ChunkReader = require("simple-chunk-reader");
 
 const filePath = "./file.txt";
 const chunkSize = 8;
@@ -145,8 +128,8 @@ You need to call this method only if you are done before reading the whole conte
 
 Syntax:
 
-```ts
-import ChunkReader from "simple-chunk-reader";
+```js
+const ChunkReader = require("simple-chunk-reader");
 
 const filePath = "./file.txt";
 const chunkSize = 8;
