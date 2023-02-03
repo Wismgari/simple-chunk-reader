@@ -1,7 +1,7 @@
 {
   "name": "simple-chunk-reader",
   "version": "1.0.6",
-  "url": "https://github.com/aldipermanaetikaputra/simple-chunk-reader",
+  "url": "https://github.com/Wismgari/simple-chunk-reader",
   "keywords": [
     "file",
     "chunk",
@@ -19,10 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://aldipermanaetikaputra@github.com/aldipermanaetikaputra/simple-chunk-reader.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "url": "https://github.com/Wismgari/simple-chunk-reader.git"
   },
   "scripts": {
 	"prepare": "npm run build",
