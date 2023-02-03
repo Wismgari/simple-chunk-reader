@@ -19,7 +19,8 @@ const ChunkReader = require("simple-chunk-reader");
 
 const filePath = "./somefile.txt";
 const chunkSize = 1024;
-const reader = new ChunkReader(filePath, chunkSize);
+const encoding = 'utf-8'; // null for no encoding
+const reader = new ChunkReader(filePath, chunkSize, encoding);
 
 let content = "";
 while (!reader.isDone) {
@@ -38,12 +39,13 @@ The module exports the following functions:
 
 ### constructor
 
-- `new ChunkReader(path: string, size: number): ChunkReader`
+- `new ChunkReader(path: string, size: number, encoding: string): ChunkReader`
 
-| Parameter |  Type  | Description                                      |
-| --------- | :----: | ------------------------------------------------ |
-| path      | string | The path or location of your file                |
-| size      | number | Chunk/buffer size in bytes, default: 1024 (1 kB) |
+| Parameter |  Type  | Description                                                 |
+| --------- | :----: | ----------------------------------------------------------- |
+| path      | string | The path or location of your file                           |
+| size      | number | Chunk/buffer size in bytes, default: 1024 (1 kB)            |
+| encoding  | string | Encoding method to use when calling read(), default 'utf-8' |
 
 ### read
 
@@ -58,7 +60,8 @@ const ChunkReader = require("simple-chunk-reader");
 
 const filePath = "./file.txt";
 const chunkSize = 8;
-const reader = new ChunkReader(filePath, chunkSize);
+const encoding = 'ascii';
+const reader = new ChunkReader(filePath, chunkSize, encoding);
 
 while (!reader.isDone) {
   console.log(reader.read());
