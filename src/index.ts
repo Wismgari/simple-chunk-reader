@@ -9,14 +9,16 @@ class ChunkReader {
   public bytesRead: number;
   public isDone: boolean;
   public readCount: number;
+  public encoding: string;
 
-  constructor(path: string, bufferSize = 1024) {
+  constructor(path: string, bufferSize = 1024, encoding = 'utf-8') {
     this.filePath = path;
     this.bufferSize = bufferSize;
     this.bytesLength = 0;
     this.bytesRead = 0;
     this.readCount = 0;
     this.isDone = false;
+	this.encoding = encoding;
   }
 
   private readNext() {
@@ -69,7 +71,12 @@ class ChunkReader {
       this.close();
     }
 
-    return data.toString("utf-8");
+	if(this.encoding)
+	{
+		return data.toString(this.encoding);
+	}
+
+    return data;
   }
 
   public readMultiple(total: number) {
