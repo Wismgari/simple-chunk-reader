@@ -9,9 +9,9 @@ class ChunkReader {
   public bytesRead: number;
   public isDone: boolean;
   public readCount: number;
-  public encoding: string;
+  public encoding: BufferEncoding;
 
-  constructor(path: string, bufferSize = 1024, encoding = 'utf-8') {
+  constructor(path: string, bufferSize = 1024, encoding: BufferEncoding = "utf8") {
     this.filePath = path;
     this.bufferSize = bufferSize;
     this.bytesLength = 0;
@@ -21,7 +21,7 @@ class ChunkReader {
 	this.encoding = encoding;
   }
 
-  private readNext() {
+  private readNext(): Buffer {
     let buffer = Buffer.alloc(this.bufferSize);
 
     if (!this.fileDescriptor) {
@@ -57,7 +57,7 @@ class ChunkReader {
     this.isDone = true;
   }
 
-  public read() {
+  public read() : string {
     if (this.isDone) {
       throw new Error(`Entire bytes in file has been read`);
     }
@@ -76,10 +76,10 @@ class ChunkReader {
 		return data.toString(this.encoding);
 	}
 
-    return data;
+    return data.toString();
   }
 
-  public readMultiple(total: number) {
+  public readMultiple(total: number): string[] {
     if (total < 1) {
       throw new RangeError("Total read should be positive number");
     }
