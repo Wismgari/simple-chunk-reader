@@ -2,6 +2,11 @@
 
 Simple, buffered, chunk-by-chunk file reader with customizable buffer size.
 
+Original https://github.com/aldipermanaetikaputra/simple-chunk-reader
+
+This fork exists to work around the hardcoded UTF-8 encoding.
+Can be installed directly via NPM as a drop in replacement.
+
 ## Install
 
 ```sh
